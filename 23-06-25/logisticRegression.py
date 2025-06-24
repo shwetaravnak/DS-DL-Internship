@@ -3,7 +3,7 @@ import numpy as np
 class LogisticRegression:
     def __init__(self):
         self.b0, self.b1 = 0, 0
-        self.sigmoid = np.array
+        self.sigmoid = np.array ([])
 
     def fit (self, X, y):
         X_mean = np.mean (X)
@@ -40,31 +40,21 @@ if __name__ == '__main__':
         0, 0, 0, 1, 1, 1
     ])
 
-
     model = LogisticRegression ()
     b0, b1 = model.fit (X=X, y=y)
     print (f'The value of intercept : {b0} \
            The value of slope : {b1}')
-
+    
     sigmoid = model.predict (X)
-    print(f'Sigmoid = {sigmoid}')
+    print (f'Sigmoid : {sigmoid}')
 
-    result = list()
-
+    result = np.array ([], dtype=int)
     for _ in range (len (sigmoid)):
         if sigmoid[_] >= 0.5:
             y_pred = 1
-
         else:
             y_pred = 0
-        result.append(y_pred)
+        result = np.append (result, y_pred)
 
-    print(f'True Label : {y}')
-    print(f'Pred Label : {result}')
-
-
-
-    
-
-
-
+    print (f'True Label : {y}')
+    print (f'Pred Label : {result}')
